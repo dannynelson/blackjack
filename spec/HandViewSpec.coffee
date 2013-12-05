@@ -18,3 +18,10 @@ describe "HandView", ->
       hand.trigger('blackjack', hand)
       text = handView.$el.find('.result').text()
       expect(text).toEqual('Blackjack!')
+
+  describe 'when hand includes an ace', ->
+    it 'displays both hand scores', ->
+      spyOn(hand, 'scores').andReturn([4,14])
+      handView.render()
+      result = handView.$el.find('.score').text()
+      expect(result).toEqual('4,14')
