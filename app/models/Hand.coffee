@@ -5,6 +5,7 @@ class window.Hand extends Backbone.Collection
   initialize: (array, @deck, @isDealer) ->
     # @on('add', , @)
     @winner = false
+    if @scores()[1] is 21 then @trigger 'blackjack', @
 
   hit: ->
     @add(@deck.pop())

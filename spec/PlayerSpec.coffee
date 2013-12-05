@@ -15,6 +15,5 @@ describe "Player", ->
     it "sets hand", ->
       expect(player.get('hand').length).toEqual(2)
 
-
     it "sets winner", ->
       expect(player.get('winner')).toBeDefined()

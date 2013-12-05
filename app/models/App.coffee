@@ -10,5 +10,4 @@ class window.App extends Backbone.Model
   _dealerFinishHand: ->
     @get('dealerHand').finishHand()
 
-  _determineWinner: ->
-    
+  # _determineWinner: ->
