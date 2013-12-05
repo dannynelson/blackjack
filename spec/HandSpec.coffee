@@ -30,3 +30,8 @@ describe "Hand", ->
       hand.finishHand()
       expect(hand.scores()[0]).toBeGreaterThan(16)
 
+    it "triggers a finished event", ->
+      dealerHand = deck.dealDealer()
+      spyOn(dealerHand, 'trigger').andCallThrough()
+      dealerHand.finishHand()
+      expect(dealerHand.trigger).toHaveBeenCalledWith('finished', dealerHand)

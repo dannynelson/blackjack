@@ -4,6 +4,7 @@ class window.Hand extends Backbone.Collection
 
   initialize: (array, @deck, @isDealer) ->
     # @on('add', , @)
+    @winner = false
 
   hit: ->
     @add(@deck.pop())
@@ -29,6 +30,7 @@ class window.Hand extends Backbone.Collection
   finishHand: ->
     @at(0).flip()
     @hit() while @scores()[0] <= 17
+    @trigger('finished', @)
 
   stand: ->
     @trigger('stand', @)
