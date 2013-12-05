@@ -26,7 +26,7 @@ describe "Hand", ->
       hand.stand()
       expect(hand.trigger).toHaveBeenCalledWith('stand', hand)
 
-  # xdescribe "finishHand", ->
-  #   it "hits until value is 17 or greater", ->
-  #     hand.finishHand()
-  #     expect(hand.scores()[0]).toBeGreaterThan(16)
+  describe "finishHand", ->
+    it "hits until value is 17 or greater", ->
+      hand.finishHand()
+      expect(hand.scores()[0]).toBeGreaterThan(16)
