@@ -4,6 +4,13 @@ describe "App", ->
   beforeEach ->
     app = new App()
 
+  describe "when created", ->
+    it "creates a dealer player", ->
+      expect(app.get('dealer')).toEqual(jasmine.any(Player));
+
+    it "creates a dealer player", ->
+      expect(app.get('player')).toEqual(jasmine.any(Player));
+
   describe "When player busts", ->
     it "dealer finishes hand", ->
       dealer = app.get('dealerHand')
