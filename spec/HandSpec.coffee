@@ -14,12 +14,6 @@ describe "Hand", ->
       hand.trigger('add')
       expect(hand.trigger).toHaveBeenCalledWith('bust', hand)
 
-  # xdescribe "When bust", ->
-  #   it "Card cannot be added to hand", ->
-  #     hand.bust = true
-  #     hand.hit();
-  #     expect(hand.length).toEqual(2);
-
   describe "when player stands", ->
     it "triggers stand event", ->
       spyOn(hand, 'trigger').andCallThrough()
@@ -27,6 +21,13 @@ describe "Hand", ->
       expect(hand.trigger).toHaveBeenCalledWith('stand', hand)
 
   describe "finishHand", ->
+    it "flips over first card", ->
+      dealerHand = deck.dealDealer()
+      expect(dealerHand.at(0).get('revealed')).toEqual(false)
+      dealerHand.finishHand()
+      expect(dealerHand.at(0).get('revealed')).toEqual(true)
+
     it "hits until value is 17 or greater", ->
       hand.finishHand()
       expect(hand.scores()[0]).toBeGreaterThan(16)
+

@@ -25,6 +25,7 @@ class window.Hand extends Backbone.Collection
     if @scores()[0] > 21 then @trigger('bust', @)
 
   finishHand: ->
+    @at(0).flip()
     @hit() while @scores()[0] <= 17
 
   stand: ->
