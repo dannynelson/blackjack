@@ -6,13 +6,6 @@ describe "Hand", ->
     deck = new Deck()
     hand = deck.dealPlayer()
 
-  describe "If hand is dealt 21", ->
-    it "triggers 'blackjack' event", ->
-      spyOn(Hand.prototype, 'trigger').andCallThrough()
-      spyOn(Hand.prototype, "scores").andReturn([11, 21])
-      testHand = deck.dealPlayer()
-      expect(testHand.trigger).toHaveBeenCalledWith('blackjack', testHand)
-
   describe "When score goes above 21", ->
     it "triggers bust event", ->
       spyOn(hand, "scores").andReturn([22])
@@ -42,3 +35,10 @@ describe "Hand", ->
       spyOn(dealerHand, 'trigger').andCallThrough()
       dealerHand.finishHand()
       expect(dealerHand.trigger).toHaveBeenCalledWith('finished', dealerHand)
+
+  describe "checkForBlackjack", ->
+    it "if hand is 21 triggers 'blackjack' event", ->
+      spyOn(hand, 'trigger').andCallThrough()
+      spyOn(hand, "scores").andReturn([11, 21])
+      hand.checkForBlackjack()
+      expect(hand.trigger).toHaveBeenCalledWith('blackjack', hand)

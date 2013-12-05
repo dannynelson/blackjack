@@ -7,8 +7,14 @@ describe "HandView", ->
     hand = deck.dealPlayer()
     handView = new HandView(collection: hand)
 
-  xdescribe 'when hand triggers "bust"', ->
+  describe 'when hand triggers "bust"', ->
     it 'it displays bust', ->
       hand.trigger('bust', hand)
-      text = handView.$el.find('.score').text()
+      text = handView.$el.find('.result').text()
       expect(text).toEqual('Bust')
+
+  describe 'when hand triggers "blackjack"', ->
+    it 'result displays "Blackjack!"', ->
+      hand.trigger('blackjack', hand)
+      text = handView.$el.find('.result').text()
+      expect(text).toEqual('Blackjack!')

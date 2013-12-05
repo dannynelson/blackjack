@@ -11,9 +11,11 @@ class window.HandView extends Backbone.View
   '
 
   initialize: ->
-    @collection.on 'bust', @scoreToBust, @
     @collection.on 'add remove change', => @render()
+    @collection.on 'bust', @scoreToBust, @
+    @collection.on 'blackjack', @scoreToBlackjack, @
     @render()
+    @collection.checkForBlackjack()
 
   render: ->
     @$el.children().detach()
@@ -24,3 +26,7 @@ class window.HandView extends Backbone.View
 
   scoreToBust: ->
     @$el.find('.result').text 'Bust'
+
+  scoreToBlackjack: ->
+    @$('.score').text @collection.scores()[1]
+    @$el.find('.result').text 'Blackjack!'

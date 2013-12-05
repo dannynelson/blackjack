@@ -3,9 +3,6 @@ class window.Hand extends Backbone.Collection
   model: Card
 
   initialize: (array, @deck, @isDealer) ->
-    # @on('add', , @)
-    @winner = false
-    if @scores()[1] is 21 then @trigger 'blackjack', @
 
   hit: ->
     @add(@deck.pop())
@@ -35,3 +32,6 @@ class window.Hand extends Backbone.Collection
 
   stand: ->
     @trigger('stand', @)
+
+  checkForBlackjack: ->
+    if @scores()[1] is 21 then @trigger('blackjack', @)
