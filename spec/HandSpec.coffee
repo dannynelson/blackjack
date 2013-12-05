@@ -10,8 +10,7 @@ describe "Hand", ->
     it "triggers bust event", ->
       spyOn(hand, "scores").andReturn([22])
       spyOn(hand, 'trigger').andCallThrough()
-
-      hand.trigger('add')
+      hand.hit()
       expect(hand.trigger).toHaveBeenCalledWith('bust', hand)
 
   describe "when player stands", ->

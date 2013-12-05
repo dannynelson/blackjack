@@ -3,10 +3,12 @@ class window.Hand extends Backbone.Collection
   model: Card
 
   initialize: (array, @deck, @isDealer) ->
-    @on('add', @checkForBust, @)
+    # @on('add', , @)
 
   hit: ->
-    @add(@deck.pop()).last()
+    @add(@deck.pop())
+    @checkForBust()
+    @last()
 
   scores: ->
     # The scores are an array of potential scores.
