@@ -2,12 +2,11 @@ class window.Hand extends Backbone.Collection
 
   model: Card
 
-  bust: false
-
   initialize: (array, @deck, @isDealer) ->
     @on('add', @checkForBust, @)
 
-  hit: -> if !@bust then @add(@deck.pop()).last()
+  hit: ->
+    @add(@deck.pop()).last()
 
   scores: ->
     # The scores are an array of potential scores.
@@ -20,10 +19,13 @@ class window.Hand extends Backbone.Collection
       score + if card.get 'revealed' then card.get 'value' else 0
     , 0
     if score > 21 then @bust = true
-    if hasAce then [score, score + 10] else [score]
+    @score = if hasAce then [score, score + 10] else [score]
 
   checkForBust: ->
-    if @scores()[0] > 21 then @bust = true
+    if @scores()[0] > 21 then @trigger('bust', @)
 
   finishHand: ->
-    @hit() while !@bust
+    # @hit() while !@bust
+
+  stand: ->
+    @trigger('stand', @)

@@ -1,4 +1,4 @@
-describe 'deck', ->
+describe 'Deck', ->
   deck = null
   hand = null
 
@@ -8,6 +8,7 @@ describe 'deck', ->
 
   describe 'hit', ->
     it "should give the last card from the deck", ->
+      debugger
       expect(deck.length).toBe 50
       expect(deck.last()).toEqual hand.hit()
       expect(deck.length).toBe 49
