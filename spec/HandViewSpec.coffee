@@ -25,3 +25,10 @@ describe "HandView", ->
       handView.render()
       result = handView.$el.find('.score').text()
       expect(result).toEqual('4,14')
+
+    describe 'when higher score is above 21', ->
+      it 'only displays the lower score', ->
+        spyOn(hand, 'scores').andReturn([14,24])
+        handView.render()
+        result = handView.$el.find('.score').text()
+        expect(result).toEqual('14')
