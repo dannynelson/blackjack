@@ -24,3 +24,6 @@ class window.Hand extends Backbone.Collection
 
   checkForBust: ->
     if @scores()[0] > 21 then @bust = true
+
+  finishHand: ->
+    @hit() while !@bust

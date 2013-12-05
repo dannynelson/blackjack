@@ -8,7 +8,6 @@ describe "Hand", ->
 
   describe "When score goes above 21", ->
     it "Bust should be true", ->
-      debugger;
       spyOn(hand, "scores").andReturn([22])
       hand.trigger('add')
       expect(hand.bust).toEqual true
@@ -18,3 +17,8 @@ describe "Hand", ->
       hand.bust = true
       hand.hit();
       expect(hand.length).toEqual(2);
+
+  describe "finishHand", ->
+    it "hits until value is 17 or greater", ->
+      hand.finishHand()
+      expect(hand.scores()[0]).toBeGreaterThan(16)
