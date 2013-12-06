@@ -43,15 +43,20 @@ describe "Hand", ->
       hand.finishHand()
       expect(hand.scores()[0]).toBeGreaterThan(16)
 
-    it "triggers a finished event", ->
-      dealerHand = deck.dealDealer()
-      spyOn(dealerHand, 'trigger').andCallThrough()
-      dealerHand.finishHand()
-      expect(dealerHand.trigger).toHaveBeenCalledWith('finished', dealerHand)
-
   describe "checkForBlackjack", ->
     it "if hand is 21 triggers 'blackjack' event", ->
       spyOn(hand, 'trigger').andCallThrough()
       spyOn(hand, "scores").andReturn([11, 21])
       hand.checkForBlackjack()
       expect(hand.trigger).toHaveBeenCalledWith('blackjack', hand)
+
+  describe "maxScore", ->
+    it "returns higher score, if higher <= 21", ->
+      spyOn(hand, "scores").andReturn([9,19])
+      expect(hand.maxScore()).toEqual(19)
+    it "returns lower score, if higher > 21", ->
+      spyOn(hand, "scores").andReturn([12,22])
+      expect(hand.maxScore()).toEqual(12)
+    it "returns first score if there is only one score", ->
+      spyOn(hand, "scores").andReturn([19])
+      expect(hand.maxScore()).toEqual(19)

@@ -12,7 +12,7 @@ describe "App", ->
       expect(app.get('player')).toEqual(jasmine.any(Player));
 
   describe "When player busts", ->
-    it "dealer finishes hand", ->
+    xit "dealer finishes hand", ->
       dealer = app.get('dealerHand')
       spyOn(dealer, 'finishHand')
       app.get('playerHand').trigger('bust')
@@ -25,7 +25,17 @@ describe "App", ->
       app.get('playerHand').trigger('stand')
       expect(dealer.finishHand).toHaveBeenCalled()
 
-  describe "When dealer finishes hand", ->
-    it "determines winner(s)", ->
-      dealer = app.get('dealerHand')
-      dealer.finishHand()
+  describe "determineWinner", ->
+    describe "when player has highest score", ->
+      it 'triggers player:wins', ->
+        spyOn(app, 'trigger').andCallThrough()
+        expect(app.trigger).toHaveBeenCalledWith('player:wins', app)
+    describe 'when dealer has highest score', ->
+      it 'triggers dealer:wins', ->
+        spyOn(app, 'trigger').andCallThrough()
+        expect(app.trigger).toHaveBeenCalledWith('dealer:wins', app)
+    describe 'when player and dealer have same score', ->
+      it 'triggers push' ->
+        spyOn(app, 'trigger').andCallThrough()
+        expect(app.trigger).toHaveBeenCalledWith('push', app)
+

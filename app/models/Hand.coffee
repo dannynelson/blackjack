@@ -33,10 +33,16 @@ class window.Hand extends Backbone.Collection
   finishHand: ->
     @at(0).flip()
     @hit() while @scores()[0] <= 17
-    @trigger('finished', @)
+    if @maxScore() > 21
+      @trigger 'bust', @
+    else
+      @trigger 'stand', @
 
   stand: ->
-    @playable = false;
-    @trigger('stand', @)
+    @playable = false
+    @trigger 'stand', @
 
+  maxScore: ->
+    score = @scores()
+    if score[1] < 21 then score[1] else score[0]
 
