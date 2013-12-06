@@ -1,14 +1,37 @@
-.card {
+body {
   float: left;
-  border: solid 1px black;
+  position: relative;
+  left: 50%;
+  background: #008a00; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover,  #008a00 0%, #005700 85%, #002400 100%); /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#008a00), color-stop(85%,#005700), color-stop(100%,#002400)); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover,  #008a00 0%,#005700 85%,#002400 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover,  #008a00 0%,#005700 85%,#002400 100%); /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover,  #008a00 0%,#005700 85%,#002400 100%); /* IE10+ */
+  background: radial-gradient(ellipse at center,  #008a00 0%,#005700 85%,#002400 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008a00', endColorstr='#002400',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.app-container {
+  float: left;
+  position: relative;
+  margin-top: 100px;
+  left: -50%;
+  text-align: center;
+}
+
+.card {
+  box-shadow: 0 2px 25px #000;
+  float: left;
+  /*border: solid 1px black;*/
   width: 120px;
   border-radius: 5px;
   height: 167px;
-  margin-right: 20px;
+  margin: 20px;
 }
 
 .covered {
-  background-color: black;
+  background-image: black;
 }
 
 .hand {
