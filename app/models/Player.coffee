@@ -1,6 +1,7 @@
 class window.Player extends Backbone.Model
 
   defaults:
+    name: 'Player'
     dealer: false
     winner: false
     scores: [0]
@@ -11,4 +12,5 @@ class window.Player extends Backbone.Model
 
   _updateScore: ->
     score = @get('hand').scores()
+    if score[2]
     @set('scores', score)

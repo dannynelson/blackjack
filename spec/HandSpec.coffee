@@ -18,6 +18,19 @@ describe "Hand", ->
       spyOn(hand, 'trigger').andCallThrough()
       hand.stand()
       expect(hand.trigger).toHaveBeenCalledWith('stand', hand)
+    it "cannot hit anymore", ->
+      length = hand.length
+      hand.stand()
+      hand.hit()
+      expect(hand.length).toEqual(length)
+
+  describe "when player busts", ->
+    it "cannot hit anymore", ->
+      spyOn(hand, "scores").andReturn([22])
+      hand.hit()
+      length = hand.length
+      hand.hit()
+      expect(hand.length).toEqual(length)
 
   describe "finishHand", ->
     it "flips over first card", ->

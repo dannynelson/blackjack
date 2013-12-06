@@ -21,6 +21,9 @@ describe "Player", ->
     it "sets winner", ->
       expect(player.get('winner')).toBeDefined()
 
+    it "sets a name", ->
+      expect(player.get('name')).toEqual('Player')
+
   describe "when player receives card", ->
     it "updates the player scores", ->
       spyOn(hand, 'scores').andReturn([14])
