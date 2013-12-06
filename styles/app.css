@@ -16,10 +16,11 @@ body {
 }
 
 .player-hand-container {
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 .app-container {
+  width: 100%;
   float: left;
   position: relative;
   margin-top: 100px;
