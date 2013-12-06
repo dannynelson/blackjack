@@ -4,9 +4,10 @@ class window.HandView extends Backbone.View
 
   #todo: switch to mustache
   template: _.template '
-    <h2><% if(isDealer){ %>Dealer<% }else{ %>You<% } %>
-    (<span class="score"></span>)
+    <h2><% if(isDealer){ %>Dealer:<% }else{ %>You:<% } %>
+    <span class="score"></span>
     <span class="result"></span>
+    <div class="cards"></div>
     </h2>
   '
 
@@ -20,7 +21,7 @@ class window.HandView extends Backbone.View
   render: ->
     @$el.children().detach()
     @$el.html @template @collection
-    @$el.append @collection.map (card) ->
+    @$el.find('.cards').append @collection.map (card) ->
       new CardView(model: card).$el
     @_displayScore()
 

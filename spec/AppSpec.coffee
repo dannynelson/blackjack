@@ -60,6 +60,6 @@ describe "App", ->
     it "starts a new game", ->
       app.get('playerHand').hit()
       lenBefore = app.get('playerHand').length
-      app._newGame()
+      app.newGame()
       lenAfter = app.get('playerHand').length
       expect(lenBefore).not.toEqual(lenAfter)

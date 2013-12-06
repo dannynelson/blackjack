@@ -1,4 +1,7 @@
 body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  text-shadow: 0 0 5px #000;  
   float: left;
   position: relative;
   left: 50%;
@@ -12,12 +15,17 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008a00', endColorstr='#002400',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
+.player-hand-container {
+  margin-bottom: 20px;
+}
+
 .app-container {
   float: left;
   position: relative;
   margin-top: 100px;
   left: -50%;
   text-align: center;
+  z-index: 0;
 }
 
 .card {
@@ -31,9 +39,50 @@ body {
 }
 
 .covered {
-  background-image: black;
+  background: black;
+}
+
+.cards {
+  position: relative;
+  left: 10px;
 }
 
 .hand {
   overflow: auto;
+}
+
+button {
+  background: #004f02; /* Old browsers */
+  background: -moz-linear-gradient(top,  #004f02 0%, #002400 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#004f02), color-stop(100%,#002400)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #004f02 0%,#002400 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #004f02 0%,#002400 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #004f02 0%,#002400 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #004f02 0%,#002400 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#004f02', endColorstr='#002400',GradientType=0 ); /* IE6-9 */
+  box-shadow: 0 1px 3px #222;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  margin: 0 10px 0 10px;
+  color: #DBF1DB;
+  padding: 10px;
+  text-shadow: 0 -2px 1px #222;
+  width: 150px;
+  height: 50px;
+}
+
+.result-box {
+  color: #FFFFFF;
+  font-size: 100px;
+  height:100%;
+  width:100%;
+  opacity: 0.8;
+  position: fixed;
+  padding-top: 300px;
+  left:0;
+  top:0;
+  z-index:1;
+  background-color:black;
 }
