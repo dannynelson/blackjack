@@ -32,8 +32,4 @@ class window.HandView extends Backbone.View
     @$el.find('.result').text 'Blackjack!'
 
   _displayScore: ->
-    scores = @collection.scores()
-    if (scores[1] > 21)
-      @$('.score').text scores[0]
-    else
-      @$('.score').text scores
+    @$('.score').text @collection.maxScore()

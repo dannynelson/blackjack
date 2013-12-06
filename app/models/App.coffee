@@ -2,18 +2,17 @@
 class window.App extends Backbone.Model
 
   initialize: ->
-    @_newGame()
+    @newGame()
 
-  _newGame: ->
+  newGame: ->
     @set 'deck', deck = new Deck()
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
 
-    # @set 'player', new Player(hand: @get('playerHand'))
-    # @set 'dealer', new Player(hand: @get('dealerHand'))
-
     @get('playerHand').on 'all', @_playerEvent, @
     @get('dealerHand').on 'all', @_dealerEvent, @
+
+    @trigger 'newGame', @
 
   _playerEvent: (event) ->
     switch event

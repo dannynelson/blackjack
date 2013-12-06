@@ -8,7 +8,7 @@ describe "Player", ->
     hand = deck.dealPlayer()
     player = new Player(hand: hand)
 
-  describe "when created", ->
+  xdescribe "when created", ->
     it "sets dealer", ->
       expect(player.get('dealer')).toBeDefined()
 
@@ -24,7 +24,7 @@ describe "Player", ->
     it "sets a name", ->
       expect(player.get('name')).toEqual('Player')
 
-  describe "when player receives card", ->
+  xdescribe "when player receives card", ->
     it "updates the player scores", ->
       spyOn(hand, 'scores').andReturn([14])
       player = new Player(hand: hand)
