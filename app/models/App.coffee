@@ -2,6 +2,9 @@
 class window.App extends Backbone.Model
 
   initialize: ->
+    @_newGame()
+
+  _newGame: ->
     @set 'deck', deck = new Deck()
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
@@ -13,14 +16,13 @@ class window.App extends Backbone.Model
     @get('dealerHand').on 'all', @_dealerEvent, @
 
   _playerEvent: (event) ->
-    debugger
     switch event
       when 'bust' then @trigger 'dealer:win', @
+      when 'blackjack' then @trigger 'player:win', @
       when 'stand' then @_dealerFinishHand()
 
   _dealerEvent: (event) ->
     switch event
-      debugger
       when 'bust' then @trigger 'player:win', @
       when 'stand' then @_determineWinner()
 
@@ -28,11 +30,9 @@ class window.App extends Backbone.Model
     @get('dealerHand').finishHand()
 
   _determineWinner: ->
-    debugger
     if @get('dealerHand').maxScore() > @get('playerHand').maxScore()
-      debugger
-      @trigger 'dealer:win'
+      @trigger 'dealer:win', @
     else if @get('dealerHand').maxScore() < @get('playerHand').maxScore()
-      @trigger 'player:win'
+      @trigger 'player:win', @
     else
-      @trigger 'push'
+      @trigger 'push', @

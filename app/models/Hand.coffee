@@ -39,8 +39,9 @@ class window.Hand extends Backbone.Collection
       @trigger 'stand', @
 
   stand: ->
-    @playable = false
-    @trigger 'stand', @
+    if @playable
+      @playable = false
+      @trigger 'stand', @
 
   maxScore: ->
     score = @scores()

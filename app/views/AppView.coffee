@@ -22,7 +22,6 @@ class window.AppView extends Backbone.View
 
   _displayResults: (event) ->
     switch event
-      debugger
       when 'dealer:win' then alert 'Dealer wins!'
       when 'player:win' then alert 'You win!'
       when 'push' then alert 'Push!'
