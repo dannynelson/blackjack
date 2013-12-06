@@ -79,11 +79,10 @@ button {
   font-size: 100px;
   height:100%;
   width:100%;
-  opacity: 0.8;
   position: fixed;
   padding-top: 300px;
   left:0;
   top:0;
   z-index:1;
-  background-color:black;
+  background: rgba(0,0,0,0.8);
 }
